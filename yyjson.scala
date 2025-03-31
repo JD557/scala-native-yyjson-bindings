@@ -210,7 +210,7 @@ object structs:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
-  opaque type yyjson_arr_iter = CStruct3[size_t, size_t, Ptr[yyjson_val]]
+  type yyjson_arr_iter = CStruct3[size_t, size_t, Ptr[yyjson_val]]
   object yyjson_arr_iter:
     given _tag: Tag[yyjson_arr_iter] = Tag.materializeCStruct3Tag[size_t, size_t, Ptr[yyjson_val]]
     def apply()(using Zone): Ptr[yyjson_arr_iter] = scala.scalanative.unsafe.alloc[yyjson_arr_iter](1)
@@ -365,7 +365,7 @@ object structs:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
-  opaque type yyjson_obj_iter = CStruct4[size_t, size_t, Ptr[yyjson_val], Ptr[yyjson_val]]
+  type yyjson_obj_iter = CStruct4[size_t, size_t, Ptr[yyjson_val], Ptr[yyjson_val]]
   object yyjson_obj_iter:
     given _tag: Tag[yyjson_obj_iter] = Tag.materializeCStruct4Tag[size_t, size_t, Ptr[yyjson_val], Ptr[yyjson_val]]
     def apply()(using Zone): Ptr[yyjson_obj_iter] = scala.scalanative.unsafe.alloc[yyjson_obj_iter](1)
@@ -1039,6 +1039,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_arr_get")
   def yyjson_arr_get(arr : Ptr[yyjson_val], idx : size_t): Ptr[yyjson_val] = extern
 
   /**
@@ -1074,6 +1075,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_arr_iter_next")
   def yyjson_arr_iter_next(iter : Ptr[yyjson_arr_iter]): Ptr[yyjson_val] = extern
 
   /**
@@ -1081,6 +1083,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_arr_size")
   def yyjson_arr_size(arr : Ptr[yyjson_val]): size_t = extern
 
   /**
@@ -1088,6 +1091,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_doc_free")
   def yyjson_doc_free(doc : Ptr[yyjson_doc]): Unit = extern
 
   /**
@@ -1176,6 +1180,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_get_bool")
   def yyjson_get_bool(`val` : Ptr[yyjson_val]): Boolean = extern
 
   /**
@@ -1198,6 +1203,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_get_num")
   def yyjson_get_num(`val` : Ptr[yyjson_val]): Double = extern
 
   /**
@@ -2841,6 +2847,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_obj_iter_get_val")
   def yyjson_obj_iter_get_val(key : Ptr[yyjson_val]): Ptr[yyjson_val] = extern
 
   /**
@@ -2869,6 +2876,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_obj_iter_next")
   def yyjson_obj_iter_next(iter : Ptr[yyjson_obj_iter]): Ptr[yyjson_val] = extern
 
   /**
@@ -2876,6 +2884,7 @@ private[lib_yyjson] object extern_functions:
 
    * [bindgen] header: /Users/velvetbaldmime/Library/Caches/sbt-vcpkg/vcpkg-install/arm64-osx/lib/pkgconfig/../../include/yyjson.h
   */
+  @name("__sn_wrap_lib_yyjson_yyjson_obj_size")
   def yyjson_obj_size(obj : Ptr[yyjson_val]): size_t = extern
 
   /**
