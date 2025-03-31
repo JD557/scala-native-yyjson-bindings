@@ -46,6 +46,20 @@ object YYUJsonParser {
     res
   }
 
+  def parseByteArray(input: Array[Byte]): ujson.Value = Zone {
+    val doc = yyjson_read(input.at(0), input.size.toUInt, yyjson_read_flag(0.toUInt))
+    val root = yyjson_doc_get_root(doc)
+
+    val res = try {
+      loop(root)
+    } catch { case ex: Exception =>
+      yyjson_doc_free(doc)
+      throw ex
+    }
+    yyjson_doc_free(doc)
+    res
+  }
+
   def parseFile(path: String): ujson.Value = Zone {
     val cPath = toCString(path)
     val doc = yyjson_read_file(cPath, yyjson_read_flag(0.toUInt), null, null)

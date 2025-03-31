@@ -47,6 +47,19 @@ object YYCirceParser extends Parser {
     res
   }
 
+  def parseByteArray(input: Array[Byte]): Either[ParsingFailure, Json] = Zone {
+    val doc = yyjson_read(input.at(0), input.size.toUInt, yyjson_read_flag(0.toUInt))
+    val root = yyjson_doc_get_root(doc)
+
+    val res = try {
+      Right(loop(root))
+    } catch {
+      case ex: Exception => Left(ParsingFailure(ex.getMessage(), ex))
+    }
+    yyjson_doc_free(doc)
+    res
+  }
+
   def parseFile(path: String): Either[ParsingFailure, Json] = Zone {
     val cPath = toCString(path)
     val doc = yyjson_read_file(cPath, yyjson_read_flag(0.toUInt), null, null)
